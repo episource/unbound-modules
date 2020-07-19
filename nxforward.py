@@ -75,7 +75,7 @@ def operate(id, event, qstate, qdata):
             if get_return_msg_rcode(qstate.return_msg) != RCODE_NOERROR \
                     or qstate.return_msg.rep.an_numrrsets == 0:
                 qname = qdata.get("cname", qstate.qinfo.qname_str)
-	        cname = apply_forward_rules(qname)
+                cname = apply_forward_rules(qname)
                 
                 # important: the forward rule might resolve to NXDOMAIN
                 #            (or some other result != NOERROR)
@@ -86,7 +86,7 @@ def operate(id, event, qstate, qdata):
                 # applying the forward rules to the initial query
                 # => check if response already contains the cname rr
                 if cname and not has_cname_rr(qstate.return_msg, qname, cname):
-	            qdata["cname"] = cname
+                    qdata["cname"] = cname
                     
                     # prepare a cname response...
                     qi = qstate.qinfo
@@ -110,8 +110,8 @@ def operate(id, event, qstate, qdata):
                     return True
         
         # a    utomated caching has been disabled while forwarding
-	# and forwarding breaks dnssec validation
-	# => cache explicitly + force security status
+        # and forwarding breaks dnssec validation
+        # => cache explicitly + force security status
         # important: take care of unbound without qdata support
         if qstate.return_msg and ( qdata.get("cname", None) \
                 or (not qdata["persistance"] and apply_forward_rules(qstate.qinfo.qname_str)) ):
