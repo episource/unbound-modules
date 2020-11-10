@@ -1,4 +1,5 @@
 import re
+import pprint
 from pythonmod_conf import *
 from collections import OrderedDict
 
@@ -162,15 +163,16 @@ def extract_dns_names_from_rr_data(rrdata):
         
         # first two bytes contain the payload length
         # third byte is the length of the first label
-        lbl_remain = ord(enc_name[2])
+        lbl_remain = enc_name[2]
+        #log_warn("decoding enc_name: " + pprint.pformat(enc_name))
         for c in enc_name[3:]:
             if lbl_remain == 0:
                 name += "."
-                lbl_remain = ord(c)
+                lbl_remain = c
                 continue
         
             lbl_remain -= 1
-            name += c 
+            name += chr(c) 
         
         names += [ name ]
 
