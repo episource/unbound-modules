@@ -26,13 +26,13 @@ def init(id, cfg):
         p = pattern.strip(".")
         if pattern.startswith("*"):
             if pattern.startswith("*."):
-                regex_pattern = "^([^\.]+\.)" + p[2:] + "\.?$"
+                regex_pattern = r"^([^\.]+\.)" + p[2:] + r"\.?$"
             elif pattern.startswith("**."):
-                regex_pattern = "^([^\.]+\.)+" + p[3:] + "\.?$"
+                regex_pattern = r"^([^\.]+\.)+" + p[3:] + r"\.?$"
             else:
                 raise ValueError("illegal nxforward pattern: " + pattern)
         else:
-            regex_pattern = "^([^\.]+\.)" + p + "\.?$"
+            regex_pattern = r"^([^\.]+\.)" + p + r"\.?$"
 
         regex = re.compile(regex_pattern, flags=re.IGNORECASE)
         _rules[regex] = target.strip(".") + "."
