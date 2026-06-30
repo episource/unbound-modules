@@ -1,13 +1,10 @@
 # unbound-modules
 This repository contains a collections of custom [python module scripts](https://www.unbound.net/documentation/pythonmod/index.html) for the [unbound](https://www.unbound.net/) dns resolver.
 
-For the modules to be used, unbound must be compiled [with python module support enabled](https://www.unbound.net/documentation/pythonmod/install.html#compiling). Out of the box, unbound only supports one python module instance at the same time (see [unbound#1213](https://www.unbound.net/documentation/pythonmod/install.html#compiling)). The default python module implementation also has another issue ([unbound#1212](https://www.nlnetlabs.nl/bugs-script/show_bug.cgi?id=1212)), that affects some of the modules below. I'm maintaining a [fork "unbound-python+"](https://github.com/episource/unbound) with the necessary patches built-in.
-
-For [Arch Linux](https://www.archlinux.org/), I'm also maintaining PKGBUILDs: ["unbound-python"](https://github.com/episource/archlinux-overlay/tree/master/unbound-python) for unbound compiled with python module support enabled and ["unbound-python+"](https://github.com/episource/archlinux-overlay/tree/master/unbound-python%2B) including my patches for the issues mentioned above.
+For the modules to be used, unbound must be compiled [with python module support enabled](https://unbound.docs.nlnetlabs.nl/en/latest/developer/python-modules.html). For [Arch Linux](https://www.archlinux.org/), I'm maintaining PKGBUILD ["unbound-python"](https://github.com/episource/archlinux-overlay/tree/master/unbound-python) providing the necessary features.
 
 ## Prerequisites
 * unbound compiled with python module support (`--with-pythonmodule`)
-* optional: ["unbound-python+"](https://github.com/episource/unbound) with patches for [unbound#1212](https://www.nlnetlabs.nl/bugs-script/show_bug.cgi?id=1212), [unbound#1213](https://www.nlnetlabs.nl/bugs-script/show_bug.cgi?id=1213) and [unbound#1214](https://www.nlnetlabs.nl/bugs-script/show_bug.cgi?id=1214)
 
 ## Install
 1. **Copy the module script** (e.g. `the_module.py`) to your machine. Choose a location that fits your needs, e.g. `/etc/unbound/modules/the_module.py`.
